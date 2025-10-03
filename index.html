@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Success, Your Indicator - Stock Market Insights</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #0f2027;
+      --secondary: #203a43;
+      --accent: #2c5364;
+      --gold: #ffd700;
+      --light-green: #9ee493;
+      --telegram: #0088cc;
+      --whatsapp: #25D366;
+      --facebook: #4267B2;
+      --text-light: #f8f9fa;
+      --text-dark: #343a40;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-light);
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      min-height: 100vh;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    /* Header Styles */
+    header {
+      padding: 1.5rem 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .logo-img {
+      height: 80px;
+      width: auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+    
+    h1 {
+      font-size: 2rem;
+      color: var(--gold);
+      margin: 0;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .tagline {
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--light-green);
+      margin-top: 5px;
+    }
+    
+    /* Banner Styles */
+    .banner {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(15, 32, 39, 0.7), rgba(32, 58, 67, 0.7));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    
+    .banner-overlay h2 {
+      font-size: 3rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .banner-overlay p {
+      font-size: 1.3rem;
+      color: var(--light-green);
+      max-width: 800px;
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--gold);
+      text-align: center;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--light-green);
+      border-radius: 2px;
+    }
+    
+    /* About Section */
+    .about {
+      background: linear-gradient(rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9)), 
+                  url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f2f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .feature-card:hover .feature-img {
+      transform: scale(1.1);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--light-green);
+      text-align: center;
+    }
+    
+    /* Community Section */
+    .community {
+      text-align: center;
+    }
+    
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn i {
+      margin-right: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .telegram { background: var(--telegram); }
+    .whatsapp { background: var(--whatsapp); }
+    .facebook { background: var(--facebook); }
+    
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      opacity: 0.9;
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      background: linear-gradient(rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9)), 
+                  url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .testimonial-text::before {
+      content: """;
+      font-size: 4rem;
+      color: var(--gold);
+      position: absolute;
+      top: -20px;
+      left: -15px;
+      opacity: 0.5;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      border: 2px solid var(--gold);
+    }
+    
+    .author-info h4 {
+      margin: 0;
+      color: var(--light-green);
+    }
+    
+    .author-info p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 0 1.5rem;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--light-green);
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background: var(--gold);
+      color: var(--primary);
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .banner {
+        height: 300px;
+      }
+      
+      .banner-overlay h2 {
+        font-size: 2.2rem;
+      }
+      
+      .banner-overlay p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <img src="https://z-cdn-media.chatglm.cn/files/308d4a9d-83e4-4eb3-bf9d-cd9654ee09d5_Emblem%20Style%20Financial%20Consultancy%20Logo.jpg?auth_key=1791028187-154f8cae58ae424abd10981eb80cbe8e-0-efeadebaf03606b38c9d6af3515758b0" alt="Your Success, Your Indicator Logo" class="logo-img">
+        <div>
+          <h1>Your Success, Your Indicator</h1>
+          <div class="tagline">Stock Market Insights | Tools | Nifty Charcha</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="banner">
+    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f2f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Stock Market Banner" class="banner-img">
+    <div class="banner-overlay">
+      <h2>Master the Stock Market</h2>
+      <p>Join our community of traders and investors to access powerful tools, real-time insights, and expert analysis</p>
+    </div>
+  </div>
+
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="about-content">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Market Analysis" class="feature-img">
+          </div>
+          <h3>Market Analysis</h3>
+          <p>Get in-depth technical analysis, market trends, and trading signals from industry experts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trading Tools" class="feature-img">
+          </div>
+          <h3>Trading Tools</h3>
+          <p>Access powerful scanners, indicators, and custom tools designed to enhance your trading strategy.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Community Support" class="feature-img">
+          </div>
+          <h3>Community Support</h3>
+          <p>Connect with like-minded traders, share ideas, and learn from collective experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="community">
+    <div class="container">
+      <h2 class="section-title">Join Our Community</h2>
+      <p>Be part of our growing community across multiple platforms. Get real-time updates, market insights, and trading ideas.</p>
+      <div class="btn-container">
+        <a class="btn telegram" href="https://t.me/yoursuccessyourindicator/12" target="_blank">
+          <i class="fab fa-telegram-plane"></i> Join Telegram
+        </a>
+        <a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbB6QAKJ3jurdPq5Rk2H" target="_blank">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp
+        </a>
+        <a class="btn facebook" href="https://www.facebook.com/profile.php?id=61581346427934" target="_blank">
+          <i class="fab fa-facebook-f"></i> Visit Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Members Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">The insights and tools provided by this community have transformed my trading approach. I've seen consistent growth in my portfolio since joining.</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Trader" class="author-avatar">
+            <div class="author-info">
+              <h4>Rajesh Kumar</h4>
+              <p>Full-time Trader</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">As a beginner, I was overwhelmed by the market. This community provided the guidance and support I needed to start trading confidently.</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Investor" class="author-avatar">
+            <div class="author-info">
+              <h4>Priya Sharma</h4>
+              <p>Investor</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">The real-time alerts and analysis are spot on. I've made better trading decisions and improved my profitability significantly.</p>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Analyst" class="author-avatar">
+            <div class="author-info">
+              <h4>Amit Patel</h4>
+              <p>Market Analyst</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <p>Your Success, Your Indicator is a premier community for stock market enthusiasts, offering tools, insights, and support for traders at all levels.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Disclaimer</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Connect With Us</h3>
+          <p>Follow us on social media for the latest updates and market insights.</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 Your Success, Your Indicator | All Rights Reserved
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
