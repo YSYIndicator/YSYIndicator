@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Success, Your Indicator - Stock Market Insights</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -31,7 +31,7 @@
       color: var(--text-light);
       background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
       min-height: 100vh;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
+      overflow-x: hidden;
     }
     
     .container {
@@ -54,7 +54,7 @@
     
     .header-content {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
     
@@ -88,6 +88,16 @@
       font-size: 0.9rem;
       color: var(--light-green);
       margin-top: 5px;
+    }
+    
+    /* Navigation Menu */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
     
     /* Banner Styles */
@@ -394,7 +404,7 @@
       opacity: 0.8;
     }
     
-    /* Mobile First Design */
+    /* Desktop Styles */
     @media (min-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -533,6 +543,9 @@
           <div class="tagline">Stock Market Insights | Tools | Nifty Charcha</div>
         </div>
       </div>
+      <button class="nav-toggle" id="navToggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
@@ -670,5 +683,13 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    // Simple JavaScript for mobile navigation toggle (if needed in future)
+    document.getElementById('navToggle').addEventListener('click', function() {
+      // This can be expanded to show/hide a navigation menu
+      console.log('Navigation toggle clicked');
+    });
+  </script>
 </body>
 </html>
